@@ -13,7 +13,6 @@ body{
   }
   
   .book-grid {
-    z-index: 2;
     position: relative;
     -webkit-transform: translateY(-15px);
             transform: translateY(-15px);
@@ -47,8 +46,62 @@ body{
     width: 100%;
     height: 1rem;
     border-radius: 2px;
-    z-index: 1;
     box-shadow: 0px -5px 3px 0px rgba(104, 39, 39, 0.2), 0px 15px 20px 0px rgba(70, 43, 43, 0.7), 0px 5px 5px 0px rgba(99, 61, 61, 0.3);
   }
+
+  .open{
+    transition: all .3s ease-in-out;
+    transform-origin: left center 0px;
+    transform-style: preserve-3d;
+    overflow: hidden;
+  }
   
-  
+  .open::after {
+    content: " ";
+    display: block;
+    opacity: 1;
+    width: 200px;
+    height: 300px;
+    /* background-color: olive; */
+    bottom: 0;
+    position: absolute;
+    transition: all .3s ease;
+}
+
+.open::before {
+    content: " ";
+    z-index: 5;
+    display: block;
+    width: 25px;
+    height: 45px;
+    left: 165px;
+    top: -12px;
+    opacity: 0;
+    position: absolute;
+    transition: all .25s;
+    background: url('bookmark.png');
+    background-size: cover;
+    background-position: bottom;
+    background-repeat: no-repeat; 
+}
+
+.open:hover{
+  transform: rotateY(-25deg) rotateZ(-1deg) scale(1.02);
+  box-shadow: 0px -5px 20px 2px rgba(94, 34, 34, 0.3), 20px 8px 0 #e2e2e2;
+}
+
+.open:hover::after {
+  content: " ";
+  display: block;
+  opacity: 0.3;
+  width: 200px;
+  height: 300px;
+  position: absolute;
+  background: linear-gradient(-180deg, rgba(255, 255, 255, .1) 0%, rgba(255, 255, 255, 0) 60%);
+}
+
+.open:hover::before {
+  transform: translateY(12px);
+  opacity: 1;
+
+}
